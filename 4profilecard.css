@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: black;   /* page background color — change this to restyle the whole page */
+  color: #333;
+  min-height: 100vh;
+  padding: 40px 20px;    /* top/bottom and left/right spacing from screen edges */
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;       /* change this to make the heading bigger or smaller */
+  margin-bottom: 10px;
+  color: white;
+  font-weight: 900;      /* extra bold */
+  text-transform: uppercase;  /* converts text to ALL CAPS automatically */
+}
+
+.subtitle {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;   /* gap between subtitle and the cards — increase to push cards down */
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* ── CARD CONTAINER — controls the overall grid layout ── */
+.card-container {
+  display: flex;
+  /* activates Flexbox — all 4 cards line up in a row automatically */
+
+  justify-content: center;
+  /* horizontal alignment of the cards — try: flex-start | space-between | space-around */
+
+  align-items: stretch;
+  /* makes all cards in the same row equal height — try: flex-start to let heights differ */
+
+  gap: 24px;
+  /* space between cards — increase for more breathing room, decrease to tighten */
+
+  flex-wrap: wrap;
+  /* lets cards drop to the next line on smaller screens — REMOVE this and all 4 cards will overflow off-screen */
+
+  max-width: 1200px;     /* change this to control how wide the card grid can get */
+  margin: 0 auto;
+}
+
+/* ── INDIVIDUAL CARD ── */
+.card {
+  flex: 1 1 220px;
+  /* flex-grow:1 flex-shrink:1 flex-basis:220px
+     220px = the starting width of each card — increase for wider cards, decrease for narrower
+     at 220px, 4 cards fit on desktop; at 300px, only 3 would fit */
+
+  max-width: 280px;
+  /* prevents cards from growing too wide on large screens — increase or remove to let cards stretch */
+
+  background: #ffffff;   /* default — overridden per card below */
+  border-radius: 16px;   /* card corner roundness — 0 = sharp corners, 50px = very round */
+  padding: 28px 24px;    /* inner spacing inside each card */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  /* card shadow: x-offset y-offset blur color — increase 0.08 for a darker shadow */
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  /* controls how smooth the hover animation is — change 0.25s to speed up or slow it down */
+
+  display: flex;
+  flex-direction: column; /* stacks image, name, description, button top to bottom */
+  align-items: center;    /* centers everything horizontally inside the card */
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  /* how far the card lifts on hover — increase for a more dramatic effect */
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  /* darker shadow on hover to enhance the lifted look */
+}
+
+.card img {
+  width: 90px;
+  height: 90px;          /* keep width and height equal to maintain a circle */
+  border-radius: 30%;    /* 50% on a square = perfect circle */
+  object-fit: cover;     /* crops the image to fill the circle without stretching */
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.card .name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 4px;
+}
+
+.card .title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;  /* auto-capitalises the job title text */
+  letter-spacing: 0.08em;     /* spacing between letters — suits uppercase labels */
+  color: #333;             /* accent color for the job title — change to rebrand */
+  margin-bottom: 12px;
+}
+
+.card .description {
+  font-size: 0.88rem;
+  font-weight: 700;  /* bold — change to 400 for normal, 600 for semi-bold */
+  line-height: 1.6;
+  margin-bottom: 20px;
+
+  flex-grow: 1;
+  /* pushes the button to the bottom of every card regardless of text length
+     remove this and buttons will sit right below the text, misaligned across cards */
+}
+
+.social-links {
+  display: flex;          /* lines the 3 buttons up in a row */
+  justify-content: center;
+  gap: 12px;              /* space between each social button — increase to spread them out */
+  margin-top: auto;       /* pushes the buttons to the bottom of the card */
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;     /* makes each button a circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-btn:hover {
+  transform: scale(1.15); /* slight grow on hover */
+  opacity: 0.85;
+}
+
+.social-btn.insta   { background: #e1306c; }  /* Instagram pink — change to rebrand */
+.social-btn.twitter { background: #000000; }  /* X/Twitter black */
+.social-btn.facebook{ background: #1877f2; }  /* Facebook blue */
+
+/* ── IMAGE POSITION ADJUSTMENTS — move the crop focus per card if face is cut off ── */
+.card:nth-child(3) img {
+  object-position: top center;  /* shows the top of Simbu's photo — change to "center" or "50% 20%" to fine-tune */
+}
+
+/* ── INDIVIDUAL CARD COLORS — change each hex to repaint that card ── */
+.card:nth-child(1) { background: #7ecece; }  /* muted cyan */
+.card:nth-child(2) { background: #d4b84a; }  /* muted yellow */
+.card:nth-child(3) { background: #6aab6a; }  /* muted green */
+.card:nth-child(4) { background: #b85555; }  /* muted red */
+
+/* ── DESCRIPTION COLORS — dark tint matching each card's color for readable contrast ── */
+.card:nth-child(1) .description { color: black; }  /* readable on cyan */
+.card:nth-child(2) .description { color: black; }  /* readable on yellow */
+.card:nth-child(3) .description { color: white; }  /* readable on green */
+.card:nth-child(4) .description { color: white; }  /* readable on red */
+
+/* ── TABLET — 2 cards per row ── */
+@media (max-width: 900px) {
+  /* change 900px to shift when the 2-column layout kicks in */
+  .card {
+    flex: 1 1 calc(50% - 12px);   /* 50% width minus half the 24px gap = 2 per row */
+    max-width: calc(50% - 12px);
+  }
+}
+
+/* ── MOBILE — 1 card per row ── */
+@media (max-width: 540px) {
+  /* change 540px to shift when the single-column layout kicks in */
+  .card {
+    flex: 1 1 100%;  /* 100% width = one card fills the whole row */
+    max-width: 100%;
+  }
+
+  h1 { font-size: 1.5rem; }
+}
