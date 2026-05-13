@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Character encoding and responsive viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPAT Construction – PEB & Structural Fabrication, Chennai</title>
+
+  <!-- Link to our external stylesheet -->
+  <link rel="stylesheet" href="webpage.css" />
+</head>
+
+<body>
+
+  <!-- ================================================
+       HEADER & NAVIGATION
+       Fixed top bar with logo and navigation links.
+       Flexbox used to space logo and nav links apart.
+  ================================================ -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+
+      <!-- Logo text — acts as the brand identity -->
+      <a href="#home" class="logo" aria-label="SPAT Construction home">
+        <span class="logo-icon">&#9632;</span> SPAT CONSTRUCTION
+      </a>
+
+      <!-- Navigation links — displayed in a row using flexbox -->
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Hamburger button shown on mobile only (CSS toggles visibility) -->
+      <button class="nav-toggle" aria-label="Toggle navigation menu">&#9776;</button>
+
+    </nav>
+  </header>
+
+  <!-- ================================================
+       MAIN CONTENT
+       Semantic wrapper for all page sections.
+  ================================================ -->
+  <main>
+
+    <!-- ================================================
+         HERO SECTION
+         Full-screen banner with heading, description,
+         and a call-to-action button.
+         Flexbox used to center everything vertically.
+    ================================================ -->
+    <section id="home" class="hero-section">
+      <div class="hero-overlay">
+
+        <!-- Left: heading, description, and CTA button -->
+        <div class="hero-content">
+          <p class="hero-badge">Engineering &amp; Contracting Firm – Chennai</p>
+          <h1>Steel-Strong Structures.<br />Built to Last.</h1>
+          <div class="hero-divider" aria-hidden="true"></div>
+          <p class="hero-sub">
+            SPAT Construction is an established engineering and contracting firm specializing in
+            Pre-Engineered Buildings (PEB), structural steel fabrication, and roof cladding.
+            We deliver precision-engineered structures on time, on budget, and built to code.
+          </p>
+          <!-- CTA button scrolls user to the contact section -->
+          <a href="#contact" class="btn-primary">Contact Us</a>
+        </div>
+
+        <!-- Right: construction image displayed as an actual image element -->
+        <div class="hero-image">
+          <img src="images/construction website image.webp" alt="SPAT Construction – Pre-Engineered Building project" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         ABOUT SECTION
+         Brief company introduction with key values.
+         Two-column layout on desktop using flexbox.
+    ================================================ -->
+    <section id="about" class="about-section">
+      <div class="container">
+
+        <!-- Left column: PEB image -->
+        <div class="about-image">
+          <img src="images/peb images.jpg" alt="Pre-Engineered Building structure by SPAT Construction" />
+        </div>
+
+        <!-- Right column: text + stats stacked vertically -->
+        <div class="about-right">
+
+          <!-- Company description text -->
+          <div class="about-text">
+            <span class="section-label">About Us</span>
+            <h2>Chennai's Trusted PEB &amp; Structural Fabrication Firm</h2>
+            <p>
+              SPAT Construction is an established engineering and contracting firm based in Chennai,
+              Tamil Nadu. We specialize in Pre-Engineered Buildings (PEB), structural steel fabrication,
+              and roof cladding solutions for industrial, commercial, and infrastructure clients across the region.
+            </p>
+            <p>
+              Every project we undertake is driven by four core commitments:
+              <strong>engineering precision</strong>, <strong>high-grade steel and materials</strong>,
+              <strong>strict safety compliance</strong>, and <strong>on-schedule delivery</strong>.
+              From design to erection, we manage the full project lifecycle with expertise.
+            </p>
+          </div>
+
+          <!-- Stats grid below the text -->
+          <div class="about-stats">
+            <!-- Each stat is an article — a self-contained piece of content -->
+            <article class="stat-card">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Years of Experience</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">Projects Completed</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Client Satisfaction</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Expert Team Members</span>
+            </article>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         SERVICES SECTION
+         Four service cards in a row on desktop.
+         Flexbox makes them wrap and stack on mobile.
+    ================================================ -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <span class="section-label">What We Do</span>
+        <h2>Our Services</h2>
+        <p class="section-sub">From PEB design and fabrication to roofing and erection, we handle every stage of your steel structure project.</p>
+
+        <!-- services-grid uses flexbox — cards sit side by side on desktop -->
+        <div class="services-grid">
+
+          <!-- Each article = one service card -->
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">🏗️</div>
+            <h3>Pre-Engineered Buildings (PEB)</h3>
+            <p>Factory-fabricated steel building systems designed for fast on-site erection — ideal for warehouses, factories, and large commercial spans.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">⚙️</div>
+            <h3>Structural Fabrication</h3>
+            <p>Custom steel structural components — columns, beams, trusses, and frames — fabricated to engineering drawings with precision and quality control.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">🔩</div>
+            <h3>Roof Cladding</h3>
+            <p>Durable roofing and wall cladding using colour-coated and galvanized steel sheets, providing weatherproof and long-lasting building envelopes.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">🏢</div>
+            <h3>Erection &amp; Contracting</h3>
+            <p>End-to-end structural erection services — from foundation anchor bolts to final bolt tightening — managed by experienced site engineers.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         WHY CHOOSE US SECTION
+         Key reasons / selling points shown as a list
+         of icon + text items in a responsive grid.
+    ================================================ -->
+    <section id="projects" class="why-section">
+      <div class="container">
+        <span class="section-label">Why SPAT</span>
+        <h2>Why Choose Us?</h2>
+        <p class="section-sub">We combine structural engineering expertise with hands-on contracting experience to deliver steel projects that stand the test of time.</p>
+
+        <!-- Flexbox grid — items wrap on smaller screens -->
+        <div class="why-grid">
+
+          <article class="why-card">
+            <span class="step-num">01</span>
+            <div class="why-icon" aria-hidden="true">👷</div>
+            <h3>Experienced Engineering Team</h3>
+            <p>Our structural engineers and skilled fabricators bring deep domain knowledge to every PEB and fabrication project, from design review to final erection.</p>
+          </article>
+
+          <article class="why-card">
+            <span class="step-num">02</span>
+            <div class="why-icon" aria-hidden="true">🔩</div>
+            <h3>High-Grade Steel &amp; Materials</h3>
+            <p>We use only IS-certified structural steel, quality-tested fasteners, and industry-standard roofing materials on every project — no compromises.</p>
+          </article>
+
+          <article class="why-card">
+            <span class="step-num">03</span>
+            <div class="why-icon" aria-hidden="true">⏱️</div>
+            <h3>On-Time Project Delivery</h3>
+            <p>Our fabrication and erection schedules are planned precisely so your building is ready when you need it, without costly delays.</p>
+          </article>
+
+          <article class="why-card">
+            <span class="step-num">04</span>
+            <div class="why-icon" aria-hidden="true">🤝</div>
+            <h3>Client-Focused Approach</h3>
+            <p>We work closely with clients from concept to handover, keeping you informed at every milestone and addressing concerns proactively.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         CONTACT FORM SECTION
+         Simple form to capture project enquiries.
+         Labels are linked to inputs via "for" and "id".
+    ================================================ -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <span class="section-label">Get In Touch</span>
+        <h2>Start Your Project With Us</h2>
+        <p class="section-sub">Tell us about your PEB, fabrication, or cladding requirement and our team will get back to you promptly.</p>
+
+        <!-- Two-column layout: form on left, info on right -->
+        <div class="contact-wrapper">
+
+          <!-- Contact form -->
+          <form class="contact-form" action="#" method="post" novalidate>
+
+            <!-- Name field -->
+            <div class="form-group">
+              <!-- "for" on label must match "id" on input — links them for accessibility -->
+              <label for="name">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="e.g. Rajesh Kumar"
+                required
+                autocomplete="name"
+              />
+            </div>
+
+            <!-- Phone field -->
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="e.g. 98400 00000"
+                required
+                autocomplete="tel"
+              />
+            </div>
+
+            <!-- Email field -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="e.g. rajesh@example.com"
+                autocomplete="email"
+              />
+            </div>
+
+            <!-- Project requirement field -->
+            <div class="form-group">
+              <label for="requirement">Project Requirement</label>
+              <textarea
+                id="requirement"
+                name="requirement"
+                rows="5"
+                placeholder="e.g. PEB warehouse 5000 sqft, structural fabrication for mezzanine floor, roof cladding replacement..."
+                required
+              ></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn-primary">Send Enquiry</button>
+
+          </form>
+
+          <!-- Contact info panel -->
+          <div class="contact-info">
+            <h3>Contact Details</h3>
+            <ul class="info-list">
+              <li>
+                <span class="info-icon" aria-hidden="true">📍</span>
+                <span>Elite apartment,vaishnavi nagar,perumattunallur,guduvancheri<br />Chennai, Tamil Nadu</span>
+              </li>
+              <li>
+                <span class="info-icon" aria-hidden="true">📞</span>
+                <span>+91 9003103911</span>
+              </li>
+              <li>
+                <span class="info-icon" aria-hidden="true">✉️</span>
+                <span>info@spatconstruction.in</span>
+              </li>
+              <li>
+                <span class="info-icon" aria-hidden="true">🕐</span>
+                <span>Mon – Sat: 9:00 AM – 6:00 PM</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================
+       FOOTER
+       Bottom bar with company name, location, and copyright.
+       Flexbox used to space content evenly.
+  ================================================ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <!-- Left: brand -->
+      <div class="footer-brand">
+        <span class="logo-icon">&#9632;</span>
+        <strong>SPAT CONSTRUCTION</strong>
+        <p>Chennai, Tamil Nadu</p>
+      </div>
+
+      <!-- Right: quick links -->
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </div>
+
+    <!-- Bottom copyright strip -->
+    <div class="footer-copy">
+      <p>&copy; 2026 SPAT Construction. All rights reserved. &mdash; Chennai, Tamil Nadu.</p>
+    </div>
+  </footer>
+
+
+</body>
+</html>

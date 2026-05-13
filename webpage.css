@@ -1,0 +1,776 @@
+/* =====================================================
+   GLOBAL RESET & CSS VARIABLES
+===================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --navy:        #0d1b2a;
+  --navy-mid:    #1b2e45;
+  --grey:        #4a5568;
+  --grey-light:  #f4f5f7;
+  --white:       #ffffff;
+  --orange:      #f59e0b;
+  --orange-dark: #d97706;
+  --border:      #e2e8f0;
+  --radius:      10px;
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md:   0 8px 28px rgba(0, 0, 0, 0.13);
+  --transition:  0.25s ease;
+  --font:        'Segoe UI', Arial, sans-serif;
+}
+
+/* =====================================================
+   PAGE-LOAD ANIMATIONS
+   fadeUp — elements rise from below and fade in.
+   Used on hero content so the landing has energy.
+===================================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+html { scroll-behavior: smooth; }
+
+/* Thin orange stripe across the very top of the browser window */
+body {
+  font-family: var(--font);
+  color: var(--grey);
+  background-color: var(--white);
+  line-height: 1.7;
+  font-size: 16px;
+  border-top: 4px solid var(--orange);
+}
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   TYPOGRAPHY
+===================================================== */
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+  color: var(--white);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block; /* needed for ::after underline */
+}
+
+/* Orange underline accent under h2 in light sections */
+h2::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  background-color: var(--orange);
+  border-radius: 2px;
+  margin-top: 0.5rem;
+}
+
+/* Remove the underline from h2 inside the dark why-section */
+.why-section h2::after {
+  background-color: var(--orange);
+  opacity: 0.7;
+}
+
+h3 {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.45rem;
+}
+
+/* Small orange pill label above section headings */
+.section-label {
+  display: inline-block;
+  background-color: var(--orange);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.25rem 0.8rem;
+  border-radius: 50px;
+  margin-bottom: 0.75rem;
+}
+
+/* Subtitle paragraph below section headings */
+.section-sub {
+  color: var(--grey);
+  max-width: 600px;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* =====================================================
+   BUTTON
+===================================================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--orange);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: background-color var(--transition), transform var(--transition),
+              box-shadow var(--transition);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--orange-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+/* =====================================================
+   HEADER & NAVBAR
+   Fixed top bar. Flexbox: logo left, links right.
+===================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--navy);
+  z-index: 1000;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  /* offset for the 4px orange body top border */
+  margin-top: -4px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5% 1rem 1.5rem;
+  width: 100%; /* span the full header width — no centering */
+}
+
+.logo {
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon { color: var(--orange); font-size: 1rem; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+/* Nav link with animated orange underline on hover */
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.92rem;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color var(--transition);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--orange);
+  border-radius: 2px;
+  transition: width var(--transition);
+}
+
+.nav-links a:hover        { color: var(--orange); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* =====================================================
+   HERO SECTION
+   Full-screen dark navy banner with diagonal stripe.
+   Flexbox: text left, image right.
+   Page-load fadeUp animation on content.
+===================================================== */
+.hero-section {
+  background-color: var(--navy);
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(245, 158, 11, 0.04) 0px,
+      rgba(245, 158, 11, 0.04) 2px,
+      transparent 2px,
+      transparent 40px
+    );
+  min-height: 100vh;
+  padding-top: 76px; /* header height + 4px top border */
+}
+
+/* Flexbox row: text content | image */
+.hero-overlay {
+  min-height: calc(100vh - 76px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 4rem 5%;
+}
+
+/* Hero text animates up on load */
+.hero-content {
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeUp 0.8s ease both;
+}
+
+/* Slightly delayed badge so it feels staggered */
+.hero-badge {
+  display: inline-block;
+  width: fit-content;
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--orange);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.hero-sub {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+/* Orange divider line between heading and description */
+.hero-divider {
+  width: 56px;
+  height: 3px;
+  background-color: var(--orange);
+  border-radius: 2px;
+}
+
+/* Hero image — blended into the navy background with CSS mask */
+.hero-image {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.2s 0.3s ease both;
+
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 20%, black 50%),
+    linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 20%, black 50%),
+    linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.hero-image img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+/* =====================================================
+   ABOUT SECTION
+   White background. Image left, text + stats right.
+===================================================== */
+.about-section {
+  background-color: var(--white);
+  padding: 6rem 0;
+}
+
+.about-section .container {
+  display: flex;
+  align-items: stretch;
+  gap: 3.5rem;
+  flex-wrap: wrap;
+}
+
+/* Left: PEB image */
+.about-image {
+  flex: 0 0 300px;
+  max-width: 300px;
+}
+
+.about-image img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  display: block;
+  /* Subtle orange left border via outline trick */
+  border-left: 4px solid var(--orange);
+}
+
+/* Right: text + stats stacked */
+.about-right {
+  flex: 1.2;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-text p {
+  color: var(--grey);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* Stats — 2×2 grid */
+.about-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stat-card {
+  flex: 1 1 calc(50% - 0.5rem);
+  background-color: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 1.3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.3rem;
+  border-top: 3px solid var(--orange);
+  transition: transform var(--transition);
+}
+
+.stat-card:hover { transform: translateY(-3px); }
+
+.stat-number {
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: var(--orange);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  letter-spacing: 0.3px;
+}
+
+/* =====================================================
+   SERVICES SECTION
+   Light grey bg. 4 cards in a row on desktop.
+===================================================== */
+.services-section {
+  background-color: var(--grey-light);
+  padding: 6rem 0;
+}
+
+.services-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.service-card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem 1.5rem;
+  flex: 1;
+  min-width: 220px;
+  max-width: 260px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* Permanent orange top stripe on every service card */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--orange);
+}
+
+.service-icon {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.service-card h3 { color: var(--navy); }
+
+.service-card p {
+  font-size: 0.92rem;
+  color: var(--grey);
+  line-height: 1.65;
+}
+
+/* =====================================================
+   WHY CHOOSE US SECTION
+   Dark navy background. 4 cards with step numbers.
+===================================================== */
+.why-section {
+  background-color: var(--navy);
+  padding: 6rem 0;
+}
+
+.why-section .section-label {
+  background-color: rgba(245, 158, 11, 0.18);
+  color: var(--orange);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.why-section h2         { color: var(--white); }
+.why-section .section-sub { color: rgba(255, 255, 255, 0.6); }
+
+.why-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.why-card {
+  background-color: var(--navy-mid);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-left: 3px solid transparent; /* animated on hover */
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  flex: 1;
+  min-width: 220px;
+  position: relative;
+  overflow: hidden;
+  transition: border-left-color var(--transition), transform var(--transition),
+              box-shadow var(--transition);
+}
+
+.why-card:hover {
+  border-left-color: var(--orange);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Large faded step number in the background of each card */
+.step-num {
+  position: absolute;
+  top: -0.5rem;
+  right: 1rem;
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: rgba(245, 158, 11, 0.08);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -2px;
+}
+
+.why-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.why-card h3 {
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.why-card p {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.91rem;
+  line-height: 1.65;
+}
+
+/* =====================================================
+   CONTACT SECTION
+   Light grey bg. Form left, info panel right.
+===================================================== */
+.contact-section {
+  background-color: var(--grey-light);
+  padding: 6rem 0;
+}
+
+.contact-wrapper {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Contact form — white card */
+.contact-form {
+  flex: 1.5;
+  min-width: 280px;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--orange);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.97rem;
+  font-family: var(--font);
+  color: var(--navy);
+  background-color: var(--grey-light);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: #b0bac9; }
+
+.contact-form .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+/* Contact info panel — dark navy card */
+.contact-info {
+  flex: 1;
+  min-width: 240px;
+  background-color: var(--navy);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  border-top: 4px solid var(--orange);
+}
+
+.contact-info h3 {
+  font-size: 1.2rem;
+  color: var(--white);
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(245, 158, 11, 0.35);
+}
+
+.info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.info-list li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.info-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.site-footer {
+  background-color: var(--navy);
+  color: rgba(255, 255, 255, 0.6);
+  /* Orange gradient top border on the footer */
+  border-top: 3px solid var(--orange);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.footer-brand strong {
+  color: var(--white);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-brand p { font-size: 0.88rem; }
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  transition: color var(--transition);
+}
+
+.footer-links a:hover { color: var(--orange); }
+
+.footer-copy {
+  text-align: center;
+  padding: 1.2rem 5%;
+  font-size: 0.85rem;
+}
+
+/* =====================================================
+   RESPONSIVE — Tablet (≤ 900px)
+===================================================== */
+@media (max-width: 900px) {
+  .service-card { max-width: calc(50% - 0.75rem); }
+}
+
+/* =====================================================
+   RESPONSIVE — Mobile (≤ 640px)
+===================================================== */
+@media (max-width: 640px) {
+
+  .nav-toggle  { display: block; }
+  .nav-links   { display: none; }
+
+  /* Hero: hide image, text fills full width */
+  .hero-image  { display: none; }
+
+  .hero-overlay {
+    padding: 3rem 5%;
+    justify-content: center;
+  }
+
+  .hero-content { max-width: 100%; }
+
+  /* About: stack vertically */
+  .about-section .container { flex-direction: column; gap: 2rem; }
+  .about-image { flex: none; max-width: 100%; }
+  .about-image img { height: 200px; }
+  .stat-card { flex: 1 1 calc(50% - 0.5rem); }
+
+  /* Services: single column */
+  .services-grid { flex-direction: column; align-items: stretch; }
+  .service-card  { max-width: 100%; }
+
+  /* Why: single column */
+  .why-grid { flex-direction: column; }
+
+  /* Contact: stacked */
+  .contact-wrapper { flex-direction: column; }
+
+  /* Footer: centered */
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .footer-links { gap: 1.2rem; }
+
+  /* Reduce section padding */
+  .about-section,
+  .services-section,
+  .why-section,
+  .contact-section { padding: 4rem 0; }
+}
