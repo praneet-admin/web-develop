@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bus Passenger Counter</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="card">
+
+      <h1>🚌 Bus Passenger Counter</h1>
+
+      <p class="label">Passengers on board</p>
+      <p id="passengerCount" class="count">0</p>
+
+      <p id="statusText" class="status">Seats Available</p>
+
+      <p>Capacity: <strong>50</strong> &nbsp;|&nbsp; Seats Left: <strong id="seatsLeft">50</strong></p>
+
+      <div class="buttons">
+        <button id="leaveBtn">- Left</button>
+        <button id="boardBtn">+ Boarded</button>
+      </div>
+
+      <button id="resetBtn">Reset</button>
+
+    </div>
+
+    <!-- Script goes at the bottom so HTML loads first -->
+    <script src="script.js"></script>
+
+  </body>
+</html>

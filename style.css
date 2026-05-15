@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px 32px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  color: #1a1a2e;
+}
+
+.label {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.count {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #1a1a2e;
+  margin: 0 0 12px;
+}
+
+/* Status text — class is swapped by JS */
+.status {
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.available {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.full {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+p {
+  color: #444;
+  margin-bottom: 24px;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#boardBtn {
+  background: #10b981;
+  color: white;
+}
+
+#leaveBtn {
+  background: #ef4444;
+  color: white;
+}
+
+#resetBtn {
+  background: #e5e7eb;
+  color: #374151;
+  width: 100%;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
