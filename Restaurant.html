@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Spoons — Menu Board</title>
+
+    <!-- Google Fonts: fancy title font + readable body font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Our styles -->
+    <link rel="stylesheet" href="Restaurant.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <img src="images/silver spoon.png" alt="Silver Spoons logo" class="site-logo">
+        <h1 class="restaurant-name">Silver Spoons</h1>
+        <p class="tagline">Authentic South Indian</p>
+        <div class="kolam-border"></div>
+    </header>
+
+    <!-- MAIN: two columns — form on left, menu board on right -->
+    <main class="main-content">
+
+        <!-- LEFT: form to add a new dish -->
+        <section class="form-section">
+            <h2 class="section-title">Add a Dish</h2>
+
+            <form id="add-form">
+
+                <div class="form-group">
+                    <label for="dish-name">Dish Name</label>
+                    <input type="text" id="dish-name" placeholder="e.g. Masala Dosa" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dish-price">Price (&#8377;)</label>
+                    <input type="number" id="dish-price" placeholder="e.g. 90" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <span class="group-label">Type</span>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="dish-type" value="veg" checked>
+                            <span class="dot veg-dot"></span> Veg
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="dish-type" value="non-veg">
+                            <span class="dot nonveg-dot"></span> Non-Veg
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dish-spice">Spice Level</label>
+                    <select id="dish-spice">
+                        <option value="mild">Mild</option>
+                        <option value="medium">Medium</option>
+                        <option value="spicy">Spicy</option>
+                    </select>
+                </div>
+
+                <!-- id="submit-btn" lets JS change its label to "Update Dish" in edit mode -->
+                <button type="submit" id="submit-btn" class="btn btn-add">Add to Board</button>
+
+                <!-- Cancel button — hidden by default, shown only when editing a dish -->
+                <button type="button" id="cancel-edit-btn" class="btn btn-cancel">Cancel Edit</button>
+
+            </form>
+        </section>
+
+        <!-- RIGHT: the menu board -->
+        <section class="board-section">
+
+            <div class="board-header">
+                <h2 class="section-title">Today's Menu</h2>
+                <div class="board-controls">
+                    <!-- JS will write the dish count into this span -->
+                    <span id="dish-count" class="dish-count"></span>
+                    <button id="clear-btn" class="btn btn-clear">Clear Board</button>
+                </div>
+            </div>
+
+            <!-- JS fills this div with dish cards -->
+            <div id="menu-board" class="menu-board"></div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>Silver Spoons &copy; 2026 — Serving tradition on every leaf</p>
+    </footer>
+
+    <!-- Script goes last so all HTML elements exist before JS runs -->
+    <script src="Restaurant.js"></script>
+
+</body>
+</html>
